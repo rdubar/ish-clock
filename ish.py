@@ -1,5 +1,9 @@
-# ISH CLOCK version 1.02 - based on old javascipt from 1998-2001!
-# Python conversio 25/04/2021
+# ISH CLOCK version 1.2
+# Copyright 1994-2024, Roger Dubar.
+#
+# This software is released under the MIT License.
+# See the LICENSE file in the project root for more information.
+
 from datetime import datetime
 from random import randint
 

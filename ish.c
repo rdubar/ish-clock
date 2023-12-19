@@ -1,4 +1,10 @@
-// ISH CLOCK version 1.10 - based on old javascipt from 1998-2001!
+/*
+    ISH CLOCK version 1.2
+    Copyright 1994-2023, Roger Dubar.
+    
+    This software is released under the MIT License.
+    See the LICENSE file in the project root for more information.
+*/
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>

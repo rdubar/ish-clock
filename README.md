@@ -1,16 +1,22 @@
 # ISH CLOCK
 
-The ISH CLOCK is a unique time-telling program that provides a human-friendly, approximate representation of the current time. Originally developed in JavaScript, this project has since been translated into Python and C, catering to a wider range of platforms and use cases.
+The ISH CLOCK tells the approximate time in a human friendly format. 
+
+I first wrote in in Javacript in around 1994, from an original which I seem to remember seeing on Unix systems, but I am not sure where. 
+
+Here are versions in Javascript, Python and C. 
+
+Please enjoy!
 
 ### Version
-1.1
+1.2
 
 ### Author
 Roger Dubar
 
 ## Description
 
-ISH CLOCK offers a charming and casual way to tell time, akin to saying "It's about quarter to ten" rather than "It's 9:45". This project includes implementations in JavaScript, Python, and C, demonstrating the versatility and portability of the concept across different programming languages.
+ISH CLOCK provides the approximate time in a human-readable format, for example "It's about quarter to ten", rather than "It's 9:45". This project includes implementations in JavaScript, Python, and C.
 
 ## License
 
@@ -35,12 +41,12 @@ gcc -o ish ish.c
 ```
 ## Contributions
 
-Contributions to the ISH CLOCK project are welcome. Whether it's improving the existing code, adding new features, or translating the program into other languages, your input is appreciated.
+Contributions to the ISH CLOCK project are welcome. 
 
 ## Issues
 
-If you encounter any issues or have suggestions, please file them on the GitHub issues page.
+Let me know if you have any issues.
 
 ## Acknowledgments
 
-Special thanks to all contributors and users of the ISH CLOCK over the years for their valuable input and support.
+Special thanks to all of users of the ISH CLOCK over the years.

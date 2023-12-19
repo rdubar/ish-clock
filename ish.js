@@ -3,7 +3,7 @@
     Copyright 1994-2023, Roger Dubar.
     
     This software is released under the MIT License.
-    See the LICENSE.txt file in the project root for more information.
+    See the LICENSE file in the project root for more information.
 */
 
 function number(x) {
