@@ -1,5 +1,5 @@
-# ISH CLOCK version 1.2
-# Copyright 1994-2024, Roger Dubar.
+# ISH CLOCK version 1.3
+# Copyright 1994-2026, Roger Dubar.
 #
 # This software is released under the MIT License.
 # See the LICENSE file in the project root for more information.
@@ -48,35 +48,29 @@ class IshTime():
         return self.ish(randint(0,24), randint(0,60), randint(0,60))
     
     def then(self, time):
-        if type(time) == datetime:
-            then = self.ish(time.hour, time.minute, time.second)
-        else:
-            t = []
-            if type(time) == int:
-                time = f'{time:04}'
-            if type(time) == str:
-                if ':' in time:
-                    time = time.split(':')
-                elif len(time) >= 4:
-                    t = [ time[0:2],time[2:4] ]
-                    if len(time) > 4:
-                        t.append(time[4:])
-            time = t
-            if isinstance(time, (list, tuple)):
-                h = m = s = 0
-                if len(time) > 0:
-                    h = time[0]
-                if len(time) > 1:
-                    m = time[1]
-                if len(time) > 2:
-                    s = time[2] 
-                then = self.ish(h,m,s)
+        if isinstance(time, datetime):
+            return self.ish(time.hour, time.minute, time.second)
+
+        if isinstance(time, int):
+            time = f'{time:04}'
+        if isinstance(time, str):
+            if ':' in time:
+                parts = time.split(':')
+            elif len(time) >= 4:
+                parts = [time[0:2], time[2:4]]
+                if len(time) > 4:
+                    parts.append(time[4:])
             else:
-                try:
-                    then = self.ish(h,m,s)
-                except:
-                    then = "IshTime not known."
-        return then
+                return "IshTime not known."
+        elif isinstance(time, (list, tuple)):
+            parts = list(time)
+        else:
+            return "IshTime not known."
+
+        h = int(parts[0]) if len(parts) > 0 else 0
+        m = int(parts[1]) if len(parts) > 1 else 0
+        s = int(parts[2]) if len(parts) > 2 else 0
+        return self.ish(h, m, s)
         
 
     def number(self, x):
@@ -98,6 +92,8 @@ class IshTime():
             m ="twenty minutes"
         elif m <= 28 or m > 33:
             m ="twenty-five minutes"
+        else:
+            m = "twenty-five minutes"
         return m # default
 
     def ishtime(self, h, m):
@@ -117,7 +113,7 @@ class IshTime():
 
     def daytime(self, h):
         h = int(h)
-        if not h or h > 21: return "at night"
+        if not h or h >= 22: return "at night"
         elif h < 12: return "in the morning"
         elif (h <= 17) : return "in the afternoon"
         return "in the evening" #  default
@@ -135,10 +131,9 @@ class IshTime():
         m = int(m)
         h = h % 12 # fix to 12 hour clock
         if (m > 57 and s > 30): m += 1 # round seconds
-        if (m > 60): m = 0 # round up minutes
+        if (m >= 60): m = 0; h += 1 # round up minutes and hour
         if (m > 33): h += 1 # round up hours
-        if (h > 12): h = 1 # the clock turns round...
-        if (h == 0): h = 12
+        h = ((h + 11) % 12) + 1 # normalize to 1-12
         return (f"It is about {self.ishtime(h, m)} {z}.")
 
 def main():

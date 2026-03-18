@@ -1,6 +1,6 @@
 /*
-    ISH CLOCK version 1.2
-    Copyright 1994-2023, Roger Dubar.
+    ISH CLOCK version 1.3
+    Copyright 1994-2026, Roger Dubar.
     
     This software is released under the MIT License.
     See the LICENSE file in the project root for more information.
@@ -20,7 +20,7 @@ function bittime(m) {
 	if (m <= 17 || m > 43) return "quarter";
 	if (m <= 23 || m > 38) return "twenty minutes";
 	if (m <= 28 || m > 33) return "twenty-five minutes";
-	return m; //default
+	return "twenty-five minutes"; //default
 }
 
 function ishtime(h, m) {
@@ -38,7 +38,7 @@ function ishtime(h, m) {
 }
 
 function daytime(h) {
-	if (!h || h > 21) return " at night";
+	if (!h || h >= 22) return " at night";
 	if (h < 12) return " in the morning";
 	if (h <= 17) return " in the afternoon";
 	return " in the evening"; // default
@@ -55,10 +55,9 @@ function ish(h, m, s) {
 	z = daytime(h);
 	h = h % 12; // fix to 12 hour clock
 	if (m > 57 && s > 30) m++; // round seconds
-	if (m > 60) m = 0; // round up minutes
+	if (m >= 60) { m = 0; h++; } // round up minutes and hour
 	if (m > 33) h++; // round up hours
-	if (h > 12) h = 1; // the clock turns round...
-	if (h == 0) h = 12;
+	h = ((h + 11) % 12) + 1; // normalize to 1-12
 	return ("It is about " + ishtime(h, m) + z + ".");
 }
 document.writeln(ish());

@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# Claude Code
+.claude
+
+# Compiled binaries
+ish
+*.o
+
+# Archives
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Xcode
+*.xcuserstate
+xcuserdata/
+DerivedData/
+build/
+
+# Session notes
+session.md
