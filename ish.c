@@ -1,6 +1,6 @@
 /*
-    ISH CLOCK version 1.2
-    Copyright 1994-2023, Roger Dubar.
+    ISH CLOCK version 1.3
+    Copyright 1994-2026, Roger Dubar.
     
     This software is released under the MIT License.
     See the LICENSE file in the project root for more information.
@@ -34,8 +34,9 @@ void ishTime(char *result, int hour, int minute) {
 
     int m = minute;
     if (m > 57) m += 1; // round seconds
-    if (m > 60) m = 0; // round up minutes
-    if (m > 33) h12 = (h12 % 12) + 1; // round up hours
+    if (m >= 60) { m = 0; h12++; } // round up minutes and hour
+    if (m > 33) h12++; // round up hours
+    h12 = ((h12 + 11) % 12) + 1; // normalize to 1-12
 
     formatTime(result, hour, h12, m, 0); // Pass both hour formats
 }
@@ -58,11 +59,11 @@ const char* bittime(int m) {
     if (m <= 17 || m > 43) return "quarter";
     if (m <= 23 || m > 38) return "twenty minutes";
     if (m <= 28 || m > 33) return "twenty-five minutes";
-    return "";
+    return "twenty-five minutes";
 }
 
 const char* daytime(int h) {
-    if (h < 6 || h > 21) return "at night";
+    if (h < 6 || h >= 22) return "at night";
     if (h < 12) return "in the morning";
     if (h <= 17) return "in the afternoon";
     return "in the evening";
