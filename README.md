@@ -2,7 +2,7 @@
 
 > *The world's oldest fuzzy clock, now on your wrist.*
 
-The ISH CLOCK tells the approximate time in a human-friendly format — "It is about quarter to ten in the morning" instead of "9:45 AM". First coded in 1994, it's been telling time the relaxed way for over 30 years.
+The ISH CLOCK tells the approximate time in a human-friendly format — "It is about quarter to ten in the morning" instead of "9:45 AM". First coded in Perl in 1994, it's been telling time the relaxed way for over 30 years.
 
 ### Version
 1.3
@@ -16,7 +16,7 @@ ISH CLOCK is available in three languages:
 
 | Language | File | Since |
 |----------|------|-------|
-| JavaScript | `ish.js` | 1994 |
+| JavaScript | `ish.js` | 1996 |
 | Python | `ish.py` | 2020 |
 | C | `ish.c` | 2023 |
 
