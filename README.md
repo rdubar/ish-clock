@@ -1,6 +1,6 @@
 # ISH CLOCK
 
-> *The world's oldest fuzzy clock, now on your wrist.*
+> *The internet's oldest fuzzy clock.*
 
 The ISH CLOCK tells the approximate time in a human-friendly format — "It is about quarter to ten in the morning" instead of "9:45 AM". First coded in Perl in 1994, it's been telling time the relaxed way for over 30 years.
 
