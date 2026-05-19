@@ -42,7 +42,6 @@ gcc -o ish ish.c
 ./ish
 ```
 
-
 ## How It Works
 
 The clock rounds the current time to the nearest five-minute interval and expresses it in natural language:

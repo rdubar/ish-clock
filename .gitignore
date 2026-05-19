@@ -16,6 +16,5 @@ __pycache__/
 *.pyc
 .pytest_cache/
 
-
 # Session notes
 session.md
